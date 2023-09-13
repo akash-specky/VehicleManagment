@@ -1,23 +1,28 @@
-import customerpackage.Customer;
 import customerpackage.GeneralCustomer;
-import maintenance.CarMaintenanceTool;
-import maintenance.MaintenanceTool;
-import sales.Invoice;
-import sales.SalesSystem;
+import vehicles.Bike;
 import vehicles.Car;
 import vehicles.Vehicle;
 
-
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Bike myBike = new Bike("Mountain Bike", "Trek", 2022, 800.0, "Manual");
 
-        Vehicle vehicleManagement = null;
-        Customer customerManagement = null;
-        MaintenanceTool maintenanceManagement = null;
-        SalesSystem salesManagement = new SalesSystem();
+
+
+
+        System.out.println("Additional Vehicles of the Bike:");
+        for (Vehicle vehicle : myBike.getBikeList()) {
+            System.out.println("Make: " + vehicle.getMake());
+            System.out.println("Model: " + vehicle.getModel());
+            System.out.println("Year: " + vehicle.getYear());
+            System.out.println("Price: $" + vehicle.getPrice());
+            System.out.println("Transmission Type: " + vehicle.getTransmissionType());
+            System.out.println();
+        }
 
         while (true) {
             System.out.println("MVMS Menu:");
@@ -38,8 +43,8 @@ public class Main {
                     String customerName = scanner.nextLine();
                     System.out.print("Enter customer contact details: ");
                     String contactDetails = scanner.nextLine();
-                    Customer newCustomer = new GeneralCustomer(customerName, contactDetails);
-                    customerManagement.addCustomer(newCustomer);
+                    GeneralCustomer newCustomer = new GeneralCustomer();
+                    newCustomer.addCustomer(customerName, contactDetails);
                     break;
                 case 2:
                     // Add a vehicle
@@ -56,8 +61,8 @@ public class Main {
                     scanner.nextLine(); // Consume the newline character
                     System.out.print("Enter transmission type: ");
                     String transmissionType = scanner.nextLine();
-                    Vehicle newVehicle = new Car(model, make, year, price, numberOfDoors, transmissionType);
-                    vehicleManagement.addVehicle(newVehicle);
+                    Car newVehicle = new Car(model, make, year, price, numberOfDoors, transmissionType);
+                    newVehicle.addVehicle(newVehicle);
                     break;
 
                 case 3:
@@ -79,7 +84,14 @@ public class Main {
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
+
             }
+
+
         }
     }
 }
+
+
+
+

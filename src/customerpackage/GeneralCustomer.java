@@ -2,18 +2,24 @@ package customerpackage;
 
 import vehicles.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class GeneralCustomer implements Customer{
+public class GeneralCustomer implements GeneralCustomerInterface,Customer{
     private String name;
     private String contactDetails;
 
-    private List<Customer> customers;
+    private List<GeneralCustomer> customers;
 
 
     public GeneralCustomer(String name,String contactDetails) {
         this.name = name;
         this.contactDetails = contactDetails;
+    }
+
+    public GeneralCustomer() {
+        customers = new ArrayList<>();
+
     }
 
 
@@ -22,17 +28,14 @@ public class GeneralCustomer implements Customer{
         return name;
     }
 
-//    @Override
-//    public Customer addCustomer(String name, String contactDetails) {
-//        Customer newCustomer = new GeneralCustomer(name, contactDetails);
-//        customers.add(newCustomer);
-//        return newCustomer;
-//    }
 
-    @Override
-    public Customer addCustomerVIP(String name, String contactDetails, int lPoints) {
-        return null;
+    public GeneralCustomer addCustomer(String name, String contactDetails) {
+        GeneralCustomer newCustomer = new GeneralCustomer(name, contactDetails);
+        customers.add(newCustomer);
+        return newCustomer;
     }
+
+
 
 
     @Override
@@ -52,20 +55,4 @@ public class GeneralCustomer implements Customer{
 
     }
 
-    @Override
-    public Customer findCustomerByName(String name) {
-        for (Customer customer : customers) {
-            if (customer.name().equals(name)) {
-                return customer;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void addCustomer(Customer newCustomer) {
-        Customer add = new GeneralCustomer(name, contactDetails);
-        customers.add(add);
-//        return newCustomer;
-    }
 }

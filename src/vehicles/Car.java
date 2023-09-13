@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car extends Vehicle{
-    private List<Vehicle> additionalVehicles;
+    private List<Vehicle> carList;
 
     public Car(String model, String make, int year, double price, int numberOfDoors, String transmissionType) {
         super(model, make, year, price, transmissionType);
-        this.additionalVehicles = new ArrayList<>();
+        this.carList = new ArrayList<>();
     }
 
 
@@ -18,13 +18,13 @@ public class Car extends Vehicle{
         return 5000;
     }
 
-    @Override
+
     public void addVehicle(Vehicle newVehicle) {
-        additionalVehicles.add(newVehicle);
+        carList.add(newVehicle);
     }
 
 
-    public String getNumberOfDoors() {
-        return "4";
+    public List<Vehicle> getCarList() {
+        return carList;
     }
 }

@@ -16,7 +16,7 @@ public class Truck extends Vehicle{
         return 0;
     }
 
-    @Override
+
     public void addVehicle(Vehicle newVehicle) {
         additionalVehicles.add(newVehicle);
     }

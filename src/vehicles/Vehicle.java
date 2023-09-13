@@ -90,18 +90,7 @@ public abstract class Vehicle {
     }
 
 
-    public  void addVehicle(Vehicle newVehicle){
-        newVehicle.addVehicle(this);
-    };
-//
-//    public static Vehicle findVehicleByModel(List< Vehicle> vehicles, String model) {
-//        for (Vehicle vehicle : vehicles) {
-//            if (vehicle.getModel().equals(model)) {
-//                return vehicle;
-//            }
-//        }
-//        return null;
-//    }
+
 
 
 }

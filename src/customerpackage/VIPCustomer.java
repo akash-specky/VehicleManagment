@@ -2,20 +2,22 @@ package customerpackage;
 
 import vehicles.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class VIPCustomer implements Customer{
+public class VIPCustomer implements VIPCustomerInterface,Customer{
 
     private String name;
     private int loyaltyPoints;
     private String contactDetails;
 
-    private List<Customer> customers;
+    private List<VIPCustomer> customers;
 
-    public VIPCustomer(String name, int loyaltyPoints,String contactDetails) {
+    public VIPCustomer(String name,String contactDetails, int loyaltyPoints) {
         this.name = name;
         this.loyaltyPoints = loyaltyPoints;
         this.contactDetails = contactDetails;
+        customers = new ArrayList<>();
     }
 
 
@@ -25,13 +27,6 @@ public class VIPCustomer implements Customer{
     }
 
 
-
-    @Override
-    public Customer addCustomerVIP(String name, String contactDetails,int lPoints) {
-        Customer newCustomer = new VIPCustomer(name,loyaltyPoints ,contactDetails);
-        customers.add(newCustomer);
-        return newCustomer;
-    }
 
     @Override
     public void inquireAboutVehicle(Vehicle vehicle) {
@@ -51,18 +46,14 @@ public class VIPCustomer implements Customer{
     }
 
     @Override
-    public Customer findCustomerByName(String name) {
-        for (Customer customer : customers) {
-            if (customer.name().equals(name)) {
-                return customer;
-            }
-        }
+    public String vipDiscount() {
         return null;
     }
 
     @Override
-    public void addCustomer(Customer newCustomer) {
-        Customer ad = new VIPCustomer(name,loyaltyPoints ,contactDetails);
-        customers.add(ad);
+    public VIPCustomer addCustomer(String name, String contactDetails, int lPoint) {
+        VIPCustomer customer = new VIPCustomer(name,contactDetails,lPoint);
+        customers.add(customer);
+        return customer;
     }
 }
